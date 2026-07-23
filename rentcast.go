@@ -114,8 +114,11 @@ func fetchRentcastPages[T any](basePath string) ([]T, error) {
 			resp.Body.Close()
 			return nil, fmt.Errorf("API returned status: %s", resp.Status)
 		}
-		body, _ := io.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		resp.Body.Close()
+		if err != nil {
+			return nil, fmt.Errorf("failed to read response body: %w", err)
+		}
 		var pageResults []T
 		if err := json.Unmarshal(body, &pageResults); err != nil {
 			return nil, err
