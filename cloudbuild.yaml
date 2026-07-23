@@ -22,6 +22,8 @@ steps:
       - 'us-west1-docker.pkg.dev/$PROJECT_ID/real-estate-repo/pipeline:latest'
       - '--region'
       - 'us-west1'
+      - '--service-account'
+      - 'pipeline@$PROJECT_ID.iam.gserviceaccount.com'
       - '--max-retries'
       - '3'
       - '--set-secrets'
