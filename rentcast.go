@@ -21,12 +21,12 @@ type HOA struct {
 }
 
 type ListingHistory struct {
-	Event        string     `json:"event"`
-	Price        float64    `json:"price"`
-	ListingType  string     `json:"listingType"`
-	ListedDate   time.Time  `json:"listedDate"`
-	RemovedDate  *time.Time `json:"removedDate"`
-	DaysOnMarket int        `json:"daysOnMarket"`
+	Event        string    `json:"event"`
+	Price        float64   `json:"price"`
+	ListingType  string    `json:"listingType"`
+	ListedDate   time.Time `json:"listedDate"`
+	RemovedDate  time.Time `json:"removedDate"`
+	DaysOnMarket int       `json:"daysOnMarket"`
 }
 
 type PropertyTaxes struct {
@@ -50,7 +50,7 @@ type TaxAssessments struct {
 type ActiveListing struct {
 	ID            string                    `json:"id"`
 	AddressLine1  string                    `json:"addressLine1"`
-	AddressLine2  *string                   `json:"addressLine2"`
+	AddressLine2  string                    `json:"addressLine2"`
 	City          string                    `json:"city"`
 	State         string                    `json:"state"`
 	StateFips     string                    `json:"stateFips"`
@@ -69,7 +69,7 @@ type ActiveListing struct {
 	Status        string                    `json:"status"`
 	Price         float64                   `json:"price"`
 	ListedDate    time.Time                 `json:"listedDate"`
-	RemovedDate   *time.Time                `json:"removedDate"`
+	RemovedDate   time.Time                 `json:"removedDate"`
 	CreatedDate   time.Time                 `json:"createdDate"`
 	LastSeenDate  time.Time                 `json:"lastSeenDate"`
 	DaysOnMarket  int                       `json:"daysOnMarket"`
@@ -85,8 +85,8 @@ type PropertySale struct {
 	AssessorID       string                    `json:"assessorId"`
 	LegalDescription string                    `json:"legalDescription"`
 	ParcelNumber     string                    `json:"parcelNumber"`
-	LastSalePrice    *float64                  `json:"lastSalePrice"`
-	LastSaleDate     *time.Time                `json:"lastSaleDate"`
+	LastSalePrice    float64                   `json:"lastSalePrice"`
+	LastSaleDate     time.Time                 `json:"lastSaleDate"`
 	TaxAssessments   map[string]TaxAssessments `json:"taxAssessments"`
 	PropertyTaxes    map[string]PropertyTaxes  `json:"propertyTaxes"`
 	History          map[string]SaleHistory    `json:"history"`
