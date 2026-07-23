@@ -2,12 +2,12 @@ steps:
   # 1. Build the Docker container image
   - id: 'build-image'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-west1-docker.pkg.dev/$PROJECT_ID/rentcast-repo/pipeline:latest', '.']
+    args: ['build', '-t', 'us-west1-docker.pkg.dev/$PROJECT_ID/real-estate-repo/pipeline:latest', '.']
 
   # 2. Push the image to Google Artifact Registry
   - id: 'push-image'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-west1-docker.pkg.dev/$PROJECT_ID/rentcast-repo/pipeline:latest']
+    args: ['push', 'us-west1-docker.pkg.dev/$PROJECT_ID/real-estate-repo/pipeline:latest']
 
   # 3. Deploy the image to a Cloud Run Job
   - id: 'deploy-job'
@@ -19,7 +19,7 @@ steps:
       - 'deploy'
       - 'real-estate-pipeline-job'
       - '--image'
-      - 'us-west1-docker.pkg.dev/$PROJECT_ID/rentcast-repo/pipeline:latest'
+      - 'us-west1-docker.pkg.dev/$PROJECT_ID/real-estate-repo/pipeline:latest'
       - '--region'
       - 'us-west1'
       - '--max-retries'
@@ -29,7 +29,7 @@ steps:
 
 # Inform Cloud Build which images to manage and verify
 images:
-  - 'us-west1-docker.pkg.dev/$PROJECT_ID/rentcast-repo/pipeline:latest'
+  - 'us-west1-docker.pkg.dev/$PROJECT_ID/real-estate-repo/pipeline:latest'
 
 options:
   # Bypass the legacy Service Account / Logging bucket error
