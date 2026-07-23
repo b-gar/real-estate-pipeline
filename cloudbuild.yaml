@@ -25,7 +25,7 @@ steps:
       - '--service-account'
       - 'pipeline@$PROJECT_ID.iam.gserviceaccount.com'
       - '--max-retries'
-      - '3'
+      - '0'
       - '--set-secrets'
       - 'RENTCAST_API_KEY=RENTCAST_API_KEY:latest'
 
